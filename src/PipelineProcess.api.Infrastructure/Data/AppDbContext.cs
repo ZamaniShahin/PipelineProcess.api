@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace PipelineProcess.api.Infrastructure.Data;
 public class AppDbContext : DbContext
 {
+  public AppDbContext() { }
   private readonly IDomainEventDispatcher? _dispatcher;
 
   public AppDbContext(DbContextOptions<AppDbContext> options,
@@ -21,6 +22,13 @@ public class AppDbContext : DbContext
   {
     base.OnModelCreating(modelBuilder);
     modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+  }
+
+  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+  {
+    base.OnConfiguring(optionsBuilder);
+    optionsBuilder.UseSqlServer(
+      "Server=.\\SQL2019;Database=PipelineProcess.api.db;TrustServerCertificate=True;user id=sa;Password=123;");
   }
 
   public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

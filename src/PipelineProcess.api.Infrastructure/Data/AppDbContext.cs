@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Ardalis.SharedKernel;
-using PipelineProcess.api.Core.ContributorAggregate;
 using Microsoft.EntityFrameworkCore;
 
 namespace PipelineProcess.api.Infrastructure.Data;
@@ -16,7 +15,7 @@ public class AppDbContext : DbContext
     _dispatcher = dispatcher;
   }
 
-  public DbSet<Contributor> Contributors => Set<Contributor>();
+  // public DbSet<Contributor> Contributors => Set<Contributor>();
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {

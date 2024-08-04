@@ -1,12 +1,10 @@
 ﻿using System.Reflection;
 using Ardalis.ListStartupServices;
 using Ardalis.SharedKernel;
-using PipelineProcess.api.Core.ContributorAggregate;
 using PipelineProcess.api.Core.Interfaces;
 using PipelineProcess.api.Infrastructure;
 using PipelineProcess.api.Infrastructure.Data;
 using PipelineProcess.api.Infrastructure.Email;
-using PipelineProcess.api.UseCases.Contributors.Create;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using MediatR;
@@ -76,37 +74,37 @@ app.UseFastEndpoints()
 
 app.UseHttpsRedirection();
 
-await SeedDatabase(app);
+// await SeedDatabase(app);
 
 app.Run();
 
-static async Task SeedDatabase(WebApplication app)
-{
-  using var scope = app.Services.CreateScope();
-  var services = scope.ServiceProvider;
-
-  try
-  {
-    var context = services.GetRequiredService<AppDbContext>();
-    //          context.Database.Migrate();
-    context.Database.EnsureCreated();
-    await SeedData.InitializeAsync(context);
-  }
-  catch (Exception ex)
-  {
-    var logger = services.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "An error occurred seeding the DB. {exceptionMessage}", ex.Message);
-  }
-}
+// static async Task SeedDatabase(WebApplication app)
+// {
+//   using var scope = app.Services.CreateScope();
+//   var services = scope.ServiceProvider;
+//
+//   try
+//   {
+//     var context = services.GetRequiredService<AppDbContext>();
+//     //          context.Database.Migrate();
+//     context.Database.EnsureCreated();
+//     // await SeedData.InitializeAsync(context);
+//   }
+//   catch (Exception ex)
+//   {
+//     var logger = services.GetRequiredService<ILogger<Program>>();
+//     logger.LogError(ex, "An error occurred seeding the DB. {exceptionMessage}", ex.Message);
+//   }
+// }
 
 void ConfigureMediatR()
 {
-  var mediatRAssemblies = new[]
-{
-  Assembly.GetAssembly(typeof(Contributor)), // Core
-  Assembly.GetAssembly(typeof(CreateContributorCommand)) // UseCases
-};
-  builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(mediatRAssemblies!));
+//   var mediatRAssemblies = new[]
+// {
+//   Assembly.GetAssembly(typeof(Contributor)), // Core
+//   Assembly.GetAssembly(typeof(CreateContributorCommand)) // UseCases
+// };
+  // builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(mediatRAssemblies!));
   builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
   builder.Services.AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>();
 }

@@ -19,4 +19,8 @@
     <ProjectReference Include="..\PipelineProcess.api.Core\PipelineProcess.api.Core.csproj" />
     <ProjectReference Include="..\PipelineProcess.api.UseCases\PipelineProcess.api.UseCases.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Data\Queries\" />
+  </ItemGroup>
 </Project>

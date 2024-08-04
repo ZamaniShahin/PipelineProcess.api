@@ -22,7 +22,7 @@ public class Project
   // private List<Schema> _schemas = [];
   // public IEnumerable<Schema> Schemas => _schemas.AsReadOnly();
   
-  public string? SchemaId { get; private set; }
+  public Guid? SchemaId { get; private set; }
   public Schema? Schema { get; private set; }
   
   private List<TodoItem> _todoItems = [];

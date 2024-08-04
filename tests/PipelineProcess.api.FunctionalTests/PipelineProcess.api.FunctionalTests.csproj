@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\src\PipelineProcess.api.Web\PipelineProcess.api.Web.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ApiEndpoints\" />
+  </ItemGroup>
+
 </Project>

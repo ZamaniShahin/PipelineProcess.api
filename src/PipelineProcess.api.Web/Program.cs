@@ -8,6 +8,7 @@ using PipelineProcess.api.Infrastructure.Email;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using MediatR;
+using PipelineProcess.api.UseCases.Services.Schemas.Commands;
 using Serilog;
 using Serilog.Extensions.Logging;
 
@@ -99,12 +100,13 @@ app.Run();
 
 void ConfigureMediatR()
 {
-//   var mediatRAssemblies = new[]
-// {
-//   Assembly.GetAssembly(typeof(Contributor)), // Core
-//   Assembly.GetAssembly(typeof(CreateContributorCommand)) // UseCases
-// };
-  // builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(mediatRAssemblies!));
+  builder.Services.AddMediatR(cfg =>
+  {
+    // Register handlers from the current assembly or other relevant assemblies
+    cfg.RegisterServicesFromAssembly(typeof(CreateSchemaCommand).Assembly); // Adjust as necessary
+  });
+    
+  // Register other required services
   builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
   builder.Services.AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>();
 }

@@ -41,7 +41,7 @@ public class UpdateSchema: Endpoint<UpdateSchema.UpdateSchemaRequest, Result<str
 
   public class UpdateSchemaRequest
   {
-    public const string Route = "/api/Schema/{SchemaId}/Create";
+    public const string Route = "/api/Schema/{SchemaId}/Update";
     public static string BuildRoute(string schemaId) => Route.Replace("{SchemaId}", schemaId.ToString());
     public string? SchemaId { get; set; }
     [Required]

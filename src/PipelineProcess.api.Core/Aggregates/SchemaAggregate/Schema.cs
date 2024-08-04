@@ -16,9 +16,20 @@ public class Schema
     Title = title;
     Description = description;
   }
+
+  public void Update(string title, string? description)
+  {
+    Title = title;
+    Description = description;
+
+    this.Modified();
+  }
   public string Title { get; private set; }
   public string? Description { get; private set; }
   
   private List<Project> _projects = [];
   public IEnumerable<Project> Projects => _projects.AsEnumerable();
+
+  private void Modified()
+    => this.ModifiedAt = DateTime.Now;
 }

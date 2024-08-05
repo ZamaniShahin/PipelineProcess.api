@@ -1,4 +1,5 @@
-﻿using Ardalis.SharedKernel;
+﻿using Ardalis.GuardClauses;
+using Ardalis.SharedKernel;
 using PipelineProcess.api.Core.Aggregates.SchemaAggregate;
 using PipelineProcess.api.Core.Aggregates.TodoItemAggregate;
 
@@ -9,14 +10,18 @@ public class Project
 {
   public string Description { get; private set; }
 
-  public Project(string description)
+  public Project(string description, Guid? schemaId)
   {
     Id = Guid.NewGuid();
     CreatedAt = DateTime.Now;
     IsRemoved = false;
-    
-    
-    Description = description;
+
+    SchemaId = schemaId;
+    Description = Guard.Against.NullOrEmpty(description, nameof(description));
+  }
+  public void Update(string description)
+  {
+    Description = Guard.Against.NullOrEmpty(description, nameof(description));
   }
 
   // private List<Schema> _schemas = [];

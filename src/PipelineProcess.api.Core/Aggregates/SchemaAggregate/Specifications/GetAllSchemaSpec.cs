@@ -5,10 +5,9 @@ namespace PipelineProcess.api.Core.Aggregates.SchemaAggregate.Specifications;
 
 public class GetAllSchemaSpec : Specification<Schema, GetAllSchemaDto>
 {
-  public GetAllSchemaSpec(string id , bool AsReadOnly = true)
+  public GetAllSchemaSpec(bool AsReadOnly = true)
   {
     Query
-      .Where(x => x.Id == Guid.Parse(id))
       .AsTracking(AsReadOnly);
 
     Query

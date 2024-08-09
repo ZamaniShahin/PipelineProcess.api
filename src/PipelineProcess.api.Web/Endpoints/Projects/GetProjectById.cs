@@ -39,7 +39,7 @@ public class GetProjectById : Endpoint<GetProjectById.GetProjectByIRequest, Resu
 
   public class GetProjectByIRequest
   {
-    public const string Route = "/api/Project/{ProjectId}/Create";
+    public const string Route = "/api/Project/{ProjectId}/Info";
     public static string BuildRoute(Guid projectId) => Route.Replace("{ProjectId}", projectId.ToString());
     [Required] public Guid ProjectId { get; set; }
   }

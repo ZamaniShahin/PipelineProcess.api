@@ -35,6 +35,6 @@ public class GetAllProjects: Endpoint<GetAllProjects.GetAllProjectsRequest, Resu
   }
   public class GetAllProjectsRequest
   {
-    public const string Route = "/api/Project/{ProjectId}/Create";
+    public const string Route = "/api/Project/All";
   }
 }

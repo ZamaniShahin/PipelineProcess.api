@@ -14,14 +14,14 @@ public class GetSchemaById : Endpoint<GetSchemaById.GetSchemaByIdRequest, Result
   }
   public override void Configure()
   {
-    Post(GetSchemaByIdRequest.Route);
+    Put(GetSchemaByIdRequest.Route);
     AllowAnonymous();
     Summary(s =>
     {
       s.Summary = "Gets An Schema By Id.";
       s.Description = "Gets An Schema By Id.";
     });
-    Tags([nameof(Schemas)]);
+    Tags(new[] { "Schemas" });
   }
   public override async Task<Result<GetSchemaByIdDto>> ExecuteAsync(GetSchemaByIdRequest req, CancellationToken ct)
   {

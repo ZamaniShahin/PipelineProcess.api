@@ -3,7 +3,7 @@
 @port=57679
 
 // List all contributors
-GET {{host}}:{{port}}/Contributors
+GET {{host}}:{{port}}/Projects/All
 
 ###
 

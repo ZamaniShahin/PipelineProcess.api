@@ -13,7 +13,7 @@ public class UpdateProject: Endpoint<UpdateProject.UpdateProjectRequest, Result<
   }
   public override void Configure()
   {
-    Post(UpdateProjectRequest.Route);
+    Put(UpdateProjectRequest.Route);
     AllowAnonymous();
     Summary(s =>
     {
@@ -32,7 +32,7 @@ public class UpdateProject: Endpoint<UpdateProject.UpdateProjectRequest, Result<
   }
   public class UpdateProjectRequest
   {
-    public const string Route = "/api/Project/{ProjectId}/Create";
+    public const string Route = "/api/Project/{ProjectId}/Info";
     public static string BuildRoute(string projectId) => Route.Replace("{ProjectId}", projectId.ToString());
     [Required]
     public Guid ProjectId { get; set; }

@@ -19,9 +19,9 @@ public class CreateProject: Endpoint<CreateProject.CreateProjectRequest, Result<
     {
       s.Summary = "Create a new Project.";
       s.Description = "Create a new Project.";
-      s.ExampleRequest = new CreateProjectRequest { SchemaId = Guid.Empty, Description = "Project Description"};
+      s.ExampleRequest = new CreateProjectRequest { Description = "Project Description"};
     });
-    Tags([nameof(Projects)]);
+    Tags(nameof(Projects));
   }
   public override async Task<Result<string>> ExecuteAsync(CreateProjectRequest req, CancellationToken ct)
   {

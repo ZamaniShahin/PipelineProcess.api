@@ -21,9 +21,9 @@ public class GetAllProjects: Endpoint<EmptyRequest, Result<List<GetProjectRecord
       s.Summary = "Gets All Projects.";
       s.Description = "Gets All Projects.";
     });
-    Tags([nameof(Projects)]);
+    Tags(nameof(Projects));
   }
-  public async Task<Result<List<GetProjectRecord>>> ExecuteAsync(GetAllProjectsRequest req, CancellationToken ct)
+  public override async Task<Result<List<GetProjectRecord>>> ExecuteAsync(EmptyRequest req, CancellationToken ct)
   {
     var result = await _mediator.Send(new GetAllProjectsQuery(), ct);
     if (result.IsSuccess)

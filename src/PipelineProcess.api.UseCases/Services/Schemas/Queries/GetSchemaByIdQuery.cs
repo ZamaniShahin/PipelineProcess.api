@@ -11,9 +11,10 @@ public class GetSchemaByIdQuery(string id) : IQuery<Result<GetSchemaByIdDto>>
   public string Id { get; set; } = id;
 }
 
-public class GetSchemaByIdQueryHandler(IReadRepository<Schema> _repository)
+public class GetSchemaByIdQueryHandler(IReadRepository<Schema> repository)
   : IQueryHandler<GetSchemaByIdQuery, Result<GetSchemaByIdDto>>
 {
+  private readonly IReadRepository<Schema> _repository = repository;
   public async Task<Result<GetSchemaByIdDto>> Handle(GetSchemaByIdQuery request, CancellationToken cancellationToken)
   {
     var schema = await _repository.FirstOrDefaultAsync(new GetSchemaByIdSpec(request.Id),

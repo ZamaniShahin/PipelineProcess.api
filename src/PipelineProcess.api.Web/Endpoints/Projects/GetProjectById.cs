@@ -1,7 +1,4 @@
-﻿using Ardalis.Result;
-using FastEndpoints;
-using MediatR;
-using Microsoft.Build.Framework;
+﻿using Microsoft.Build.Framework;
 using PipelineProcess.api.Core.Records;
 using PipelineProcess.api.UseCases.Services.Projects.Queries;
 

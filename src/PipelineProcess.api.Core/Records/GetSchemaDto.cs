@@ -2,7 +2,7 @@
 
 public class GetAllSchemaDto(string title, string description, DateTime createdAt)
 {
-  public string Title { get; init; } = title;
-  public string? Description { get; init; } = description;
-  public DateTime CreatedAt { get; init; } = createdAt;
+  public string Title { get; set; } = title;
+  public string? Description { get; set; } = description;
+  public DateTime CreatedAt { get; set; } = createdAt;
 }

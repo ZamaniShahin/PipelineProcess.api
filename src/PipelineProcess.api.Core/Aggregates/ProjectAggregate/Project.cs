@@ -2,6 +2,7 @@
 using Ardalis.SharedKernel;
 using PipelineProcess.api.Core.Aggregates.SchemaAggregate;
 using PipelineProcess.api.Core.Aggregates.TodoItemAggregate;
+using PipelineProcess.api.Core.SharedEntities;
 
 namespace PipelineProcess.api.Core.Aggregates.ProjectAggregate;
 
@@ -24,14 +25,12 @@ public class Project
     Description = Guard.Against.NullOrEmpty(description, nameof(description));
   }
 
-  // private List<Schema> _schemas = [];
-  // public IEnumerable<Schema> Schemas => _schemas.AsReadOnly();
-  
   public Guid? SchemaId { get; private set; }
   public Schema? Schema { get; private set; }
   
-  private List<TodoItem> _todoItems = [];
-  public IEnumerable<TodoItem> TodoItems => _todoItems.AsReadOnly();
-
+  
+  private List<ProjectTodoItemEntity> _projectTodoItems = [];
+  public IEnumerable<ProjectTodoItemEntity> ProjectTodoItems => _projectTodoItems.AsEnumerable();
+  
   
 }

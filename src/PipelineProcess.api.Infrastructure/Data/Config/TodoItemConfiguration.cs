@@ -16,7 +16,8 @@ public class TodoItemConfiguration : IEntityTypeConfiguration<TodoItem>
 
     builder.Property(x => x.Description).HasMaxLength(DataSchemaConstants.DEFAULT_DESCRIPTION_LENGTH);
 
-    builder.HasMany(x => x.Projects)
-      .WithMany(x => x.TodoItems);
+    builder.HasMany(x => x.ProjectTodoItems)
+      .WithOne(x => x.TodoItem)
+      .HasForeignKey(x=>x.TodoItemId);
   }
 }

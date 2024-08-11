@@ -1,7 +1,4 @@
-﻿using Ardalis.Result;
-using FastEndpoints;
-using FluentValidation;
-using MediatR;
+﻿using FluentValidation;
 using Microsoft.Build.Framework;
 using PipelineProcess.api.Infrastructure.Data.Config;
 using PipelineProcess.api.UseCases.Services.Schemas.Commands;
@@ -24,8 +21,8 @@ public class UpdateSchema: Endpoint<UpdateSchema.UpdateSchemaRequest, Result<str
     AllowAnonymous();
     Summary(s =>
     {
-      s.Summary = "Update a new Schema.";
-      s.Description = "Update a new Schema. A valid Title is required.";
+      s.Summary = "Update a Schema.";
+      s.Description = "Update a Schema. A valid Title is required.";
       s.ExampleRequest = new UpdateSchemaRequest { Title = "Schema Title", Description = "Schema Description"};
     });
     Tags([nameof(Schemas)]);

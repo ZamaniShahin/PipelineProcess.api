@@ -2,6 +2,7 @@
 using Ardalis.SharedKernel;
 using PipelineProcess.api.Core.Aggregates.ProjectAggregate;
 using PipelineProcess.api.Core.Aggregates.TodoItemAggregate.Enums;
+using PipelineProcess.api.Core.SharedEntities;
 
 namespace PipelineProcess.api.Core.Aggregates.TodoItemAggregate;
 
@@ -10,8 +11,7 @@ public class TodoItem
 {
   public string Title { get; private set; }
   public string Description { get; private set; }
-  public StatusEnum Status { get; private set; }
-  public AdminAcceptEnum AdminAcceptStatus { get; private set; }
+
 
   public TodoItem(string title, string description)
   {
@@ -24,13 +24,14 @@ public class TodoItem
     Description = Guard.Against.NullOrEmpty(description, nameof(description));
   }
 
-  public void SetStatus(StatusEnum statusEnum)
-    => this.Status = statusEnum;
+  public void Update(string title, string description)
+  {
+    Title = Guard.Against.NullOrEmpty(title, nameof(title));
+    Description = Guard.Against.NullOrEmpty(description, nameof(description));
+  }
+
+  private List<ProjectTodoItemEntity> _projectTodoItems = [];
+  public IEnumerable<ProjectTodoItemEntity> ProjectTodoItems => _projectTodoItems.AsEnumerable();
   
-  public void SetAdminChangeStatus(AdminAcceptEnum statusEnum)
-    => this.AdminAcceptStatus = statusEnum;
-  
-  private List<Project> _projects = [];
-  public IEnumerable<Project> Projects => _projects.AsReadOnly();
 
 }

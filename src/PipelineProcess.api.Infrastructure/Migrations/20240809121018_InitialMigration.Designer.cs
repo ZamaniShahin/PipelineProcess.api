@@ -12,8 +12,8 @@ using PipelineProcess.api.Infrastructure.Data;
 namespace PipelineProcess.api.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240804084343_InitalMigration")]
-    partial class InitalMigration
+    [Migration("20240809121018_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,9 +93,6 @@ namespace PipelineProcess.api.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("AdminAcceptStatus")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -110,9 +107,6 @@ namespace PipelineProcess.api.Infrastructure.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -123,19 +117,40 @@ namespace PipelineProcess.api.Infrastructure.Migrations
                     b.ToTable("TodoItem");
                 });
 
-            modelBuilder.Entity("ProjectTodoItem", b =>
+            modelBuilder.Entity("PipelineProcess.api.Core.SharedEntities.ProjectTodoItemEntity", b =>
                 {
-                    b.Property<Guid>("ProjectsId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TodoItemsId")
+                    b.Property<int>("AdminAcceptStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProjectsId", "TodoItemsId");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
-                    b.HasIndex("TodoItemsId");
+                    b.Property<Guid?>("TodoItemId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.ToTable("ProjectTodoItem");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("TodoItemId");
+
+                    b.ToTable("ProjectTodoItemEntity");
                 });
 
             modelBuilder.Entity("PipelineProcess.api.Core.Aggregates.ProjectAggregate.Project", b =>
@@ -147,24 +162,34 @@ namespace PipelineProcess.api.Infrastructure.Migrations
                     b.Navigation("Schema");
                 });
 
-            modelBuilder.Entity("ProjectTodoItem", b =>
+            modelBuilder.Entity("PipelineProcess.api.Core.SharedEntities.ProjectTodoItemEntity", b =>
                 {
-                    b.HasOne("PipelineProcess.api.Core.Aggregates.ProjectAggregate.Project", null)
-                        .WithMany()
-                        .HasForeignKey("ProjectsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("PipelineProcess.api.Core.Aggregates.ProjectAggregate.Project", "Project")
+                        .WithMany("ProjectTodoItems")
+                        .HasForeignKey("ProjectId");
 
-                    b.HasOne("PipelineProcess.api.Core.Aggregates.TodoItemAggregate.TodoItem", null)
-                        .WithMany()
-                        .HasForeignKey("TodoItemsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("PipelineProcess.api.Core.Aggregates.TodoItemAggregate.TodoItem", "TodoItem")
+                        .WithMany("ProjectTodoItems")
+                        .HasForeignKey("TodoItemId");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("TodoItem");
+                });
+
+            modelBuilder.Entity("PipelineProcess.api.Core.Aggregates.ProjectAggregate.Project", b =>
+                {
+                    b.Navigation("ProjectTodoItems");
                 });
 
             modelBuilder.Entity("PipelineProcess.api.Core.Aggregates.SchemaAggregate.Schema", b =>
                 {
                     b.Navigation("Projects");
+                });
+
+            modelBuilder.Entity("PipelineProcess.api.Core.Aggregates.TodoItemAggregate.TodoItem", b =>
+                {
+                    b.Navigation("ProjectTodoItems");
                 });
 #pragma warning restore 612, 618
         }

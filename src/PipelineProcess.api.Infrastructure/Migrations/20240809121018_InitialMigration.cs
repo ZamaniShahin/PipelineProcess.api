@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PipelineProcess.api.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalMigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,8 +34,6 @@ namespace PipelineProcess.api.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", maxLength: 64, nullable: false),
                     Title = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    AdminAcceptStatus = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsRemoved = table.Column<bool>(type: "bit", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -67,27 +65,31 @@ namespace PipelineProcess.api.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectTodoItem",
+                name: "ProjectTodoItemEntity",
                 columns: table => new
                 {
-                    ProjectsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TodoItemsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    AdminAcceptStatus = table.Column<int>(type: "int", nullable: false),
+                    TodoItemId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsRemoved = table.Column<bool>(type: "bit", nullable: false),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectTodoItem", x => new { x.ProjectsId, x.TodoItemsId });
+                    table.PrimaryKey("PK_ProjectTodoItemEntity", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProjectTodoItem_Project_ProjectsId",
-                        column: x => x.ProjectsId,
+                        name: "FK_ProjectTodoItemEntity_Project_ProjectId",
+                        column: x => x.ProjectId,
                         principalTable: "Project",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ProjectTodoItem_TodoItem_TodoItemsId",
-                        column: x => x.TodoItemsId,
+                        name: "FK_ProjectTodoItemEntity_TodoItem_TodoItemId",
+                        column: x => x.TodoItemId,
                         principalTable: "TodoItem",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -96,16 +98,21 @@ namespace PipelineProcess.api.Infrastructure.Migrations
                 column: "SchemaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectTodoItem_TodoItemsId",
-                table: "ProjectTodoItem",
-                column: "TodoItemsId");
+                name: "IX_ProjectTodoItemEntity_ProjectId",
+                table: "ProjectTodoItemEntity",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectTodoItemEntity_TodoItemId",
+                table: "ProjectTodoItemEntity",
+                column: "TodoItemId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProjectTodoItem");
+                name: "ProjectTodoItemEntity");
 
             migrationBuilder.DropTable(
                 name: "Project");

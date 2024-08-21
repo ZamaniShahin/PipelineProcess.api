@@ -6,22 +6,24 @@ using PipelineProcess.api.Infrastructure;
 using PipelineProcess.api.Infrastructure.Data;
 using PipelineProcess.api.Infrastructure.Email;
 using FastEndpoints.Swagger;
+using Microsoft.EntityFrameworkCore;
 using PipelineProcess.api.UseCases.Services.Schemas.Commands;
+using PipelineProcess.api.Web.Seeds;
 using Serilog;
 using Serilog.Extensions.Logging;
 
-var logger = Log.Logger = new LoggerConfiguration()
+var appLogger = Log.Logger = new LoggerConfiguration()
   .Enrich.FromLogContext()
   .WriteTo.Console()
   .CreateLogger();
 
-logger.Information("Starting web host");
+appLogger.Information("Starting web host");
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((_, config) => config.ReadFrom.Configuration(builder.Configuration));
-var microsoftLogger = new SerilogLoggerFactory(logger)
-    .CreateLogger<Program>();
+var microsoftLogger = new SerilogLoggerFactory(appLogger)
+  .CreateLogger<Program>();
 
 // Configure Web Behavior
 builder.Services.Configure<CookiePolicyOptions>(options =>
@@ -31,10 +33,10 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 });
 
 builder.Services.AddFastEndpoints()
-                .SwaggerDocument(o =>
-                {
-                  o.ShortSchemaNames = true;
-                });
+  .SwaggerDocument(o =>
+  {
+    o.ShortSchemaNames = true;
+  });
 
 ConfigureMediatR();
 
@@ -69,32 +71,29 @@ else
 }
 
 app.UseFastEndpoints()
-    .UseSwaggerGen(); // Includes AddFileServer and static files middleware
+  .UseSwaggerGen(); // Includes AddFileServer and static files middleware
 
 app.UseHttpsRedirection();
-
-// await SeedDatabase(app);
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+  var context = services.GetRequiredService<AppDbContext>();
+  context.Database.Migrate();
+  context.Database.EnsureCreated();
+  await SeedFactories.InitializeAsync(services);
+}
+catch (Exception ex)
+{
+  var logger = services.GetRequiredService<ILogger<Program>>();
+  logger.LogError(ex, "An error occurred seeding the DB. {exceptionMessage}", ex.Message);
+}
 
 app.Run();
 
-// static async Task SeedDatabase(WebApplication app)
-// {
-//   using var scope = app.Services.CreateScope();
-//   var services = scope.ServiceProvider;
-//
-//   try
-//   {
-//     var context = services.GetRequiredService<AppDbContext>();
-//     //          context.Database.Migrate();
-//     context.Database.EnsureCreated();
-//     // await SeedData.InitializeAsync(context);
-//   }
-//   catch (Exception ex)
-//   {
-//     var logger = services.GetRequiredService<ILogger<Program>>();
-//     logger.LogError(ex, "An error occurred seeding the DB. {exceptionMessage}", ex.Message);
-//   }
-// }
+
+
+
 
 void ConfigureMediatR()
 {
@@ -103,7 +102,7 @@ void ConfigureMediatR()
     // Register handlers from the current assembly or other relevant assemblies
     cfg.RegisterServicesFromAssembly(typeof(CreateSchemaCommand).Assembly); // Adjust as necessary
   });
-    
+
   // Register other required services
   builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
   builder.Services.AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>();

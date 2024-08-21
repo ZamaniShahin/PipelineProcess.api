@@ -1,28 +1,28 @@
 ﻿using Ardalis.Result;
 using Ardalis.SharedKernel;
-using PipelineProcess.api.Core.Aggregates.TodoItemAggregate;
-using PipelineProcess.api.Core.Aggregates.TodoItemAggregate.Specifications;
-using PipelineProcess.api.Core.Records;
+using PipelineProcess.api.Core.Aggregates.ProcessAggregate;
+using PipelineProcess.api.Core.Aggregates.ProcessAggregate.Specifications;
+using PipelineProcess.api.Core.Records.ProcessDtos;
 
 namespace PipelineProcess.api.UseCases.Services.TodoItems.Queries;
 
-public class GetTodoItemByIdQuery(string id) : IQuery<Result<GetTodoItemDto>>
+public class GetTodoItemByIdQuery(string id) : IQuery<Result<GetProcessDto>>
 {
   public string Id { get; set; } = id;
 }
 
-public class GetTodoItemByIdQueryHandler(IReadRepository<TodoItem> repository)
-  : IQueryHandler<GetTodoItemByIdQuery, Result<GetTodoItemDto>>
+public class GetTodoItemByIdQueryHandler(IReadRepository<Process> repository)
+  : IQueryHandler<GetTodoItemByIdQuery, Result<GetProcessDto>>
 {
-  private readonly IReadRepository<TodoItem> _repository = repository;
-  public async Task<Result<GetTodoItemDto>> Handle(GetTodoItemByIdQuery request, CancellationToken cancellationToken)
+  private readonly IReadRepository<Process> _repository = repository;
+  public async Task<Result<GetProcessDto>> Handle(GetTodoItemByIdQuery request, CancellationToken cancellationToken)
   {
-    var todoItem = await _repository.FirstOrDefaultAsync(new GetTodoItemByIdSpec(request.Id), cancellationToken);
+    var todoItem = await _repository.FirstOrDefaultAsync(new GetProcessByIdSpec(request.Id), cancellationToken);
 
     if (todoItem is null)
-      return Result<GetTodoItemDto>.NotFound();
+      return Result<GetProcessDto>.NotFound();
     
-    return Result<GetTodoItemDto>.Success(todoItem);
+    return Result<GetProcessDto>.Success(todoItem);
     
   }
 }

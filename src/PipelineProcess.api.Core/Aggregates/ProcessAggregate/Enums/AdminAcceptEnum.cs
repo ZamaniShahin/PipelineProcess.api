@@ -1,4 +1,4 @@
-﻿namespace PipelineProcess.api.Core.Aggregates.TodoItemAggregate.Enums;
+﻿namespace PipelineProcess.api.Core.Aggregates.ProcessAggregate.Enums;
 
 public enum AdminAcceptEnum : int
 {

@@ -1,14 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using PipelineProcess.api.UseCases.Services.ProjectTodoItems;
-
-namespace PipelineProcess.api.Web.Endpoints.ProjectTodoItems;
+using PipelineProcess.api.UseCases.Services.ProcessSheets.Commands;
+namespace PipelineProcess.api.Web.Endpoints.ProcessSheetEndpoints;
 
 public class
-  CreateProjectTodoItemEndpoint : Endpoint<CreateProjectTodoItemEndpoint.CreateProjectTodoItemRequest, Result<Guid>>
+  CreateProcessSheetEndpoint : Endpoint<CreateProcessSheetEndpoint.CreateProjectTodoItemRequest, Result<Guid>>
 {
   private readonly IMediator _mediator;
 
-  public CreateProjectTodoItemEndpoint(IMediator mediator)
+  public CreateProcessSheetEndpoint(IMediator mediator)
   {
     _mediator = mediator;
   }
@@ -26,7 +25,7 @@ public class
 
   public override async Task<Result<Guid>> ExecuteAsync(CreateProjectTodoItemRequest req, CancellationToken ct)
   {
-    var result = await _mediator.Send(new CreateProjectTodoItemCommand(req.ProjectId, req.TodoItemId), ct);
+    var result = await _mediator.Send(new CreateProcessSheetCommand(req.ProjectId, req.TodoItemId), ct);
     if (result.IsSuccess)
       Response = result.Value;
     return result;

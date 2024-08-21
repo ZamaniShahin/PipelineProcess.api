@@ -1,11 +1,11 @@
 ﻿using PipelineProcess.api.Core.Aggregates;
 using PipelineProcess.api.Core.Aggregates.ProjectAggregate;
-using PipelineProcess.api.Core.Aggregates.TodoItemAggregate;
-using PipelineProcess.api.Core.Aggregates.TodoItemAggregate.Enums;
+using PipelineProcess.api.Core.Aggregates.ProcessAggregate;
+using PipelineProcess.api.Core.Aggregates.ProcessAggregate.Enums;
 
 namespace PipelineProcess.api.Core.SharedEntities;
 
-public class ProjectTodoItemEntity
+public class ProcessSheetEntity
   : BaseEntity<Guid>
 {
   public StatusEnum Status { get; private set; }
@@ -17,7 +17,7 @@ public class ProjectTodoItemEntity
   public void SetAdminChangeStatus(AdminAcceptEnum statusEnum)
     => this.AdminAcceptStatus = statusEnum;
 
-  public ProjectTodoItemEntity(StatusEnum status, AdminAcceptEnum adminAcceptStatus)
+  public ProcessSheetEntity(StatusEnum status, AdminAcceptEnum adminAcceptStatus)
   {
     Id = Guid.NewGuid();
     CreatedAt = DateTime.Now;
@@ -27,7 +27,7 @@ public class ProjectTodoItemEntity
     AdminAcceptStatus = adminAcceptStatus;
   }
   public Guid? TodoItemId { get; private set; }
-  public TodoItem? TodoItem { get; private set; }
+  public Process? TodoItem { get; private set; }
   
   public Guid? ProjectId { get; private set; }
   public Project? Project { get; private set; }

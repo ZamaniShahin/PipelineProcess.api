@@ -1,5 +1,5 @@
 ﻿using Microsoft.Build.Framework;
-using PipelineProcess.api.Core.Records;
+using PipelineProcess.api.Core.Records.SchemaDtos;
 using PipelineProcess.api.UseCases.Services.Schemas.Queries;
 
 namespace PipelineProcess.api.Web.Endpoints.Schemas;

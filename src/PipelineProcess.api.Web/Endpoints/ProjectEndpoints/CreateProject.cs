@@ -1,7 +1,7 @@
 ﻿using Microsoft.Build.Framework;
-using PipelineProcess.api.UseCases.Services.Projects;
+using PipelineProcess.api.UseCases.Services.Projects.Commands;
 
-namespace PipelineProcess.api.Web.Endpoints.Projects;
+namespace PipelineProcess.api.Web.Endpoints.ProjectEndpoints;
 
 public class CreateProject: Endpoint<CreateProject.CreateProjectRequest, Result<string>>
 {
@@ -21,7 +21,7 @@ public class CreateProject: Endpoint<CreateProject.CreateProjectRequest, Result<
       s.Description = "Create a new Project.";
       s.ExampleRequest = new CreateProjectRequest { Description = "Project Description"};
     });
-    Tags(nameof(Projects));
+    Tags(nameof(ProjectEndpoints));
   }
   public override async Task<Result<string>> ExecuteAsync(CreateProjectRequest req, CancellationToken ct)
   {

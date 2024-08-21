@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
 using Ardalis.SharedKernel;
-using PipelineProcess.api.Core.Aggregates.TodoItemAggregate;
+using PipelineProcess.api.Core.Aggregates.ProcessAggregate;
 
 namespace PipelineProcess.api.UseCases.Services.TodoItems.Commands;
 
@@ -12,10 +12,10 @@ public class UpdateTodoItemCommand(string id, string title, string description)
   public string Id { get; set; } = id;
 }
 
-public class UpdateTodoItemCommandHandler(IRepository<TodoItem> repository)
+public class UpdateTodoItemCommandHandler(IRepository<Process> repository)
   : ICommandHandler<UpdateTodoItemCommand, Result<string>>
 {
-  private readonly IRepository<TodoItem> _repository = repository;
+  private readonly IRepository<Process> _repository = repository;
 
   public async Task<Result<string>> Handle(UpdateTodoItemCommand request, CancellationToken cancellationToken)
   {

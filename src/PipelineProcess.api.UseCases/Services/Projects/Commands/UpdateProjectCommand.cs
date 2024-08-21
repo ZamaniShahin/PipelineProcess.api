@@ -3,7 +3,7 @@ using Ardalis.SharedKernel;
 using PipelineProcess.api.Core.Aggregates.ProjectAggregate;
 using PipelineProcess.api.Core.Aggregates.ProjectAggregate.Specifications;
 
-namespace PipelineProcess.api.UseCases.Services.Projects;
+namespace PipelineProcess.api.UseCases.Services.Projects.Commands;
 
 public class UpdateProjectCommand(Guid projectId, string description) : Ardalis.SharedKernel.ICommand<Result<string>>
 {
@@ -11,10 +11,10 @@ public class UpdateProjectCommand(Guid projectId, string description) : Ardalis.
   public string? Description { get; set; } = description;
 }
 public class UpdateProjectCommandHandler(IRepository<Project> repository)
-  : ICommandHandler<CreateProjectCommand, Result<string>>
+  : ICommandHandler<UpdateProjectCommand, Result<string>>
 {
   private readonly IRepository<Project> _repository = repository;
-  public async Task<Result<string>> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
+  public async Task<Result<string>> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
   {
     var project = await _repository.FirstOrDefaultAsync(new GetProjectSpec(request.ProjectId, false), cancellationToken);
     if (project is null)

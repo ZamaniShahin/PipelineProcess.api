@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PipelineProcess.api.Core.Aggregates.TodoItemAggregate;
+using PipelineProcess.api.Core.Aggregates.ProcessAggregate;
 
 namespace PipelineProcess.api.Infrastructure.Data.Config;
 
-public class TodoItemConfiguration : IEntityTypeConfiguration<TodoItem>
+public class TodoItemConfiguration : IEntityTypeConfiguration<Process>
 {
-  public void Configure(EntityTypeBuilder<TodoItem> builder)
+  public void Configure(EntityTypeBuilder<Process> builder)
   {
     builder.HasKey(x => x.Id);
 
@@ -16,7 +16,7 @@ public class TodoItemConfiguration : IEntityTypeConfiguration<TodoItem>
 
     builder.Property(x => x.Description).HasMaxLength(DataSchemaConstants.DEFAULT_DESCRIPTION_LENGTH);
 
-    builder.HasMany(x => x.ProjectTodoItems)
+    builder.HasMany(x => x.ProcessSheets)
       .WithOne(x => x.TodoItem)
       .HasForeignKey(x=>x.TodoItemId);
   }

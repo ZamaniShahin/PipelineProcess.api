@@ -21,7 +21,7 @@ public class ProjectConfiguration : IEntityTypeConfiguration<Project>
       .HasForeignKey(x => x.SchemaId);
 
 
-    builder.HasMany(x => x.ProjectTodoItems)
+    builder.HasMany(x => x.ProjectProcesses)
       .WithOne(x => x.Project)
       .HasForeignKey(x => x.ProjectId);
   }

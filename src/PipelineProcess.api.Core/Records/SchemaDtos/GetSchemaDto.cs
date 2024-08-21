@@ -1,6 +1,6 @@
-﻿namespace PipelineProcess.api.Core.Records;
+﻿namespace PipelineProcess.api.Core.Records.SchemaDtos;
 
-public class GetTodoItemDto(string title, string description, DateTime createdAt)
+public class GetAllSchemaDto(string title, string description, DateTime createdAt)
 {
   public string Title { get; set; } = title;
   public string? Description { get; set; } = description;

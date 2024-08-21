@@ -1,4 +1,4 @@
-﻿namespace PipelineProcess.api.Core.Records;
+﻿namespace PipelineProcess.api.Core.Records.SchemaDtos;
 
 public class GetSchemaByIdDto(string title, string description, DateTime createdAt)
 {

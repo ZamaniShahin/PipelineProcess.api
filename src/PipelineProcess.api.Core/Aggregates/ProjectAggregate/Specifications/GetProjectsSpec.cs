@@ -1,5 +1,5 @@
 ﻿using Ardalis.Specification;
-using PipelineProcess.api.Core.Records;
+using PipelineProcess.api.Core.Records.ProjectDtos;
 
 namespace PipelineProcess.api.Core.Aggregates.ProjectAggregate.Specifications;
 

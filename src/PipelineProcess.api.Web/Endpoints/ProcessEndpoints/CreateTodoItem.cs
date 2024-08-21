@@ -1,6 +1,6 @@
 ﻿using PipelineProcess.api.UseCases.Services.TodoItems.Commands;
 
-namespace PipelineProcess.api.Web.Endpoints.TodoItems;
+namespace PipelineProcess.api.Web.Endpoints.ProcessEndpoints;
 
 public class CreateTodoItem : Endpoint<CreateTodoItem.CreateTodoItemRequest, Result<string>>
 {

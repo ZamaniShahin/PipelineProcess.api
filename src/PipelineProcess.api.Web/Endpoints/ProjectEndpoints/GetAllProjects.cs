@@ -1,7 +1,7 @@
-﻿using PipelineProcess.api.Core.Records;
+﻿using PipelineProcess.api.Core.Records.ProjectDtos;
 using PipelineProcess.api.UseCases.Services.Projects.Queries;
 
-namespace PipelineProcess.api.Web.Endpoints.Projects;
+namespace PipelineProcess.api.Web.Endpoints.ProjectEndpoints;
 
 public class GetAllProjects: Endpoint<EmptyRequest, Result<List<GetProjectRecord>>>
 {
@@ -21,7 +21,7 @@ public class GetAllProjects: Endpoint<EmptyRequest, Result<List<GetProjectRecord
       s.Summary = "Gets All Projects.";
       s.Description = "Gets All Projects.";
     });
-    Tags(nameof(Projects));
+    Tags(nameof(ProjectEndpoints));
   }
   public override async Task<Result<List<GetProjectRecord>>> ExecuteAsync(EmptyRequest req, CancellationToken ct)
   {

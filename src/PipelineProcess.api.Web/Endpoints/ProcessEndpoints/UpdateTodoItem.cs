@@ -1,7 +1,7 @@
 ﻿using Microsoft.Build.Framework;
 using PipelineProcess.api.UseCases.Services.TodoItems.Commands;
 
-namespace PipelineProcess.api.Web.Endpoints.TodoItems;
+namespace PipelineProcess.api.Web.Endpoints.ProcessEndpoints;
 
 public class UpdateTodoItem : Endpoint<UpdateTodoItem.UpdateTodoItemRequest, Result<string>>
 {

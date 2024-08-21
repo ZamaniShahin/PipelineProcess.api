@@ -2,7 +2,7 @@
 using Ardalis.SharedKernel;
 using PipelineProcess.api.Core.Aggregates.SchemaAggregate;
 using PipelineProcess.api.Core.Aggregates.SchemaAggregate.Specifications;
-using PipelineProcess.api.Core.Records;
+using PipelineProcess.api.Core.Records.SchemaDtos;
 
 namespace PipelineProcess.api.UseCases.Services.Schemas.Queries;
 

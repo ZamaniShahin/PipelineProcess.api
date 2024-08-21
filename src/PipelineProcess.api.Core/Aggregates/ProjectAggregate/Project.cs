@@ -1,7 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using Ardalis.SharedKernel;
 using PipelineProcess.api.Core.Aggregates.SchemaAggregate;
-using PipelineProcess.api.Core.Aggregates.TodoItemAggregate;
+using PipelineProcess.api.Core.Aggregates.ProcessAggregate;
 using PipelineProcess.api.Core.SharedEntities;
 
 namespace PipelineProcess.api.Core.Aggregates.ProjectAggregate;
@@ -29,8 +29,8 @@ public class Project
   public Schema? Schema { get; private set; }
   
   
-  private List<ProjectTodoItemEntity> _projectTodoItems = [];
-  public IEnumerable<ProjectTodoItemEntity> ProjectTodoItems => _projectTodoItems.AsEnumerable();
+  private List<ProcessSheetEntity> _projectProcesses = [];
+  public IEnumerable<ProcessSheetEntity> ProjectProcesses => _projectProcesses.AsEnumerable();
   
   
 }

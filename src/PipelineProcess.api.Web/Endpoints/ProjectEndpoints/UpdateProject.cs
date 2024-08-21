@@ -1,7 +1,7 @@
 ﻿using Microsoft.Build.Framework;
-using PipelineProcess.api.UseCases.Services.Projects;
+using PipelineProcess.api.UseCases.Services.Projects.Commands;
 
-namespace PipelineProcess.api.Web.Endpoints.Projects;
+namespace PipelineProcess.api.Web.Endpoints.ProjectEndpoints;
 
 public class UpdateProject: Endpoint<UpdateProject.UpdateProjectRequest, Result<string>>
 {
@@ -21,7 +21,7 @@ public class UpdateProject: Endpoint<UpdateProject.UpdateProjectRequest, Result<
       s.Description = "Update's a Project.";
       s.ExampleRequest = new UpdateProjectRequest { ProjectId = Guid.Empty, Description = "Project Description"};
     });
-    Tags([nameof(Projects)]);
+    Tags([nameof(ProjectEndpoints)]);
   }
   public override async Task<Result<string>> ExecuteAsync(UpdateProjectRequest req, CancellationToken ct)
   {

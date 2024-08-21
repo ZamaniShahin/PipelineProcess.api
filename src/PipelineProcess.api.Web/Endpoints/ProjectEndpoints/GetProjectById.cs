@@ -1,8 +1,8 @@
 ﻿using Microsoft.Build.Framework;
-using PipelineProcess.api.Core.Records;
+using PipelineProcess.api.Core.Records.ProjectDtos;
 using PipelineProcess.api.UseCases.Services.Projects.Queries;
 
-namespace PipelineProcess.api.Web.Endpoints.Projects;
+namespace PipelineProcess.api.Web.Endpoints.ProjectEndpoints;
 
 public class GetProjectById : Endpoint<GetProjectById.GetProjectByIRequest, Result<GetProjectByIdRecord>>
 {
@@ -23,7 +23,7 @@ public class GetProjectById : Endpoint<GetProjectById.GetProjectByIRequest, Resu
       s.Description = "Get's a Project.";
       s.ExampleRequest = new GetProjectByIRequest { ProjectId = Guid.Empty};
     });
-    Tags([nameof(Projects)]);
+    Tags([nameof(ProjectEndpoints)]);
   }
 
   public override async Task<Result<GetProjectByIdRecord>> ExecuteAsync(GetProjectByIRequest req, CancellationToken ct)

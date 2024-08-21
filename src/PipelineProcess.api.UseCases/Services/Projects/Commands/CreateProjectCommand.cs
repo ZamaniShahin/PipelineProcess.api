@@ -1,9 +1,8 @@
 ﻿using Ardalis.Result;
 using Ardalis.SharedKernel;
 using PipelineProcess.api.Core.Aggregates.ProjectAggregate;
-using PipelineProcess.api.Core.Aggregates.ProjectAggregate.Specifications;
 
-namespace PipelineProcess.api.UseCases.Services.Projects;
+namespace PipelineProcess.api.UseCases.Services.Projects.Commands;
 
 public class CreateProjectCommand(Guid projectId, string description) : Ardalis.SharedKernel.ICommand<Result<string>>
 {

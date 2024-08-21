@@ -10,21 +10,25 @@ public class ProcessSheetEntity
 {
   public StatusEnum Status { get; private set; }
   public AdminAcceptEnum AdminAcceptStatus { get; private set; }
-  
-  public void SetStatus(StatusEnum statusEnum)
-    => this.Status = statusEnum;
-  
-  public void SetAdminChangeStatus(AdminAcceptEnum statusEnum)
-    => this.AdminAcceptStatus = statusEnum;
+  public DateTime? StatusChangedAt { get; private set; }
+  public DateTime? AdminAcceptStatusChangedAt { get; private set; }
 
-  public ProcessSheetEntity(StatusEnum status, AdminAcceptEnum adminAcceptStatus)
+  public void SetStatus(StatusEnum statusEnum)
+  {
+    this.Status = statusEnum;
+    StatusChangedAt = DateTime.Now;
+  }
+  
+
+  public void SetAdminAcceptStatus(AdminAcceptEnum adminAcceptStatus)
+  {
+    AdminAcceptStatus = adminAcceptStatus;
+    AdminAcceptStatusChangedAt = DateTime.Now;
+  }
+
+  public ProcessSheetEntity()
   {
     Id = Guid.NewGuid();
-    CreatedAt = DateTime.Now;
-    IsRemoved = false;
-    
-    Status = status;
-    AdminAcceptStatus = adminAcceptStatus;
   }
   public Guid? TodoItemId { get; private set; }
   public Process? TodoItem { get; private set; }

@@ -5,7 +5,7 @@ using PipelineProcess.api.UseCases.Services.Schemas.Commands;
 
 namespace PipelineProcess.api.Web.Endpoints.Schemas;
 
-public class CreateSchema: Endpoint<CreateSchema.CreateSchemaRequest, Result<string>>
+public class CreateSchema : Endpoint<CreateSchema.CreateSchemaRequest, Result<string>>
 {
   private readonly IMediator _mediator;
 
@@ -22,14 +22,15 @@ public class CreateSchema: Endpoint<CreateSchema.CreateSchemaRequest, Result<str
     {
       s.Summary = "Create a new Schema.";
       s.Description = "Create a new Schema. A valid Title is required.";
-      s.ExampleRequest = new CreateSchemaRequest { Title = "Schema Title", Description = "Schema Description"};
+      s.ExampleRequest = new CreateSchemaRequest { Title = "Schema Title", Description = "Schema Description" };
     });
     Tags([nameof(Schemas)]);
   }
 
   public override async Task<Result<string>> ExecuteAsync(CreateSchemaRequest req, CancellationToken ct)
   {
-    var result = await _mediator.Send(new CreateSchemaCommand(req.Title ?? string.Empty, req.Description), ct);
+    var result =
+      await _mediator.Send(new CreateSchemaCommand(req.Title ?? string.Empty, req.Description, req.Count), ct);
     if (result.IsSuccess)
       Response = result.Value;
     return result;
@@ -39,11 +40,11 @@ public class CreateSchema: Endpoint<CreateSchema.CreateSchemaRequest, Result<str
   {
     public const string Route = "/api/Schema/Create";
 
-    [Required]
-    public string? Title { get; set; }
+    [Required] public string? Title { get; set; }
     public string? Description { get; set; }
+    public uint Count { get; set; }
   }
-  
+
   public class CreateSchemaValidator : Validator<CreateSchemaRequest>
   {
     public CreateSchemaValidator()

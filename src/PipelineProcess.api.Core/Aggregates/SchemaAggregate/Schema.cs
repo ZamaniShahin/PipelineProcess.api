@@ -9,10 +9,6 @@ public class Schema
   public Schema(string title, string? description)
   {
     Id = Guid.NewGuid();
-    CreatedAt = DateTime.Now;
-    IsRemoved = false;
-    
-    
     Title = title;
     Description = description;
   }
@@ -21,7 +17,6 @@ public class Schema
   {
     Title = title;
     Description = description;
-
     this.Modified();
   }
   public string Title { get; private set; }
@@ -30,6 +25,5 @@ public class Schema
   private List<Project> _projects = [];
   public IEnumerable<Project> Projects => _projects.AsEnumerable();
 
-  private void Modified()
-    => this.ModifiedAt = DateTime.Now;
+
 }

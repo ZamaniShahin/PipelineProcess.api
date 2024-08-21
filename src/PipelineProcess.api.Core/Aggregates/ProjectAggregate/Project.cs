@@ -14,8 +14,6 @@ public class Project
   public Project(string description, Guid? schemaId)
   {
     Id = Guid.NewGuid();
-    CreatedAt = DateTime.Now;
-    IsRemoved = false;
 
     SchemaId = schemaId;
     Description = Guard.Against.NullOrEmpty(description, nameof(description));

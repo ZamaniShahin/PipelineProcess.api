@@ -18,9 +18,6 @@ public class Process
   public Process(string title, string description)
   {
     Id = Guid.NewGuid();
-    CreatedAt = DateTime.Now;
-    IsRemoved = false;
-    
     
     Title = Guard.Against.NullOrEmpty(title, nameof(title));
     Description = Guard.Against.NullOrEmpty(description, nameof(description));

@@ -46,7 +46,8 @@ project.fragment.lock.json
 # OS generated files
 .DS_Store
 Thumbs.db
-
+obj/**
+bin/**
 # Temporary files
 *.tmp
 *.temp
@@ -54,7 +55,7 @@ Thumbs.db
 *.log
 *.tlog
 *.user
-
+**/obj/**
 # Local development files
 appsettings.Development.json
 appsettings.Local.json

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Records\ProcessSheetDtos\" />
+    <Folder Include="Dtos\ProcessSheetDtos\" />
   </ItemGroup>
 
 </Project>

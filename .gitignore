@@ -9,6 +9,7 @@
 [Ll]og/
 # Rider files
 .idea/
+.idea/**  # Ignore everything inside .idea
 *.sln.iml
 
 # Visual Studio Code settings
@@ -35,6 +36,12 @@ project.fragment.lock.json
 !**/packages/build/*.props
 !**/packages/build/*.targets
 *.nupkg
+
+# Compiler generated files
+.bit/
+**/.bit/**
+# Ignore all .txt files
+*.txt
 
 # OS generated files
 .DS_Store

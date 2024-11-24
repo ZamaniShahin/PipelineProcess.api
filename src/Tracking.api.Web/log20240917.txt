@@ -1,0 +1,337 @@
+2024-09-17 14:07:38.785 +03:30 [INF] Registered 11 endpoints in 2,122 milliseconds.
+2024-09-17 14:07:41.381 +03:30 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:07:41.420 +03:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:07:41.426 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:07:41.429 +03:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:07:41.460 +03:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-17 14:07:41.482 +03:30 [INF] No migrations were applied. The database is already up to date.
+2024-09-17 14:07:41.486 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:07:41.519 +03:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2024-09-17 14:07:41.970 +03:30 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Factory] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-17 14:07:42.210 +03:30 [INF] Now listening on: https://localhost:7012
+2024-09-17 14:07:42.212 +03:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-17 14:07:42.213 +03:30 [INF] Hosting environment: Development
+2024-09-17 14:07:42.215 +03:30 [INF] Content root path: D:\Codes\PersonalProjects\Tracking\src\Tracking.api.Web
+2024-09-17 14:07:43.895 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012//swagger - null null
+2024-09-17 14:07:43.953 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012//swagger - 302 0 null 59.0514ms
+2024-09-17 14:07:43.970 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 14:07:44.114 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 143.7337ms
+2024-09-17 14:07:44.129 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/swagger-ui.css - null null
+2024-09-17 14:07:44.135 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/swagger-ui-bundle.js - null null
+2024-09-17 14:07:44.135 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.css - null null
+2024-09-17 14:07:44.135 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/swagger-ui-standalone-preset.js - null null
+2024-09-17 14:07:44.155 +03:30 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2024-09-17 14:07:44.171 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.css - 200 218 text/css 36.2811ms
+2024-09-17 14:07:44.203 +03:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-09-17 14:07:44.203 +03:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-09-17 14:07:44.220 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/swagger-ui.css - 200 152073 text/css 90.831ms
+2024-09-17 14:07:44.220 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/swagger-ui-standalone-preset.js - 200 230294 text/javascript 84.1957ms
+2024-09-17 14:07:44.239 +03:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-09-17 14:07:44.243 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/swagger-ui-bundle.js - 200 1452754 text/javascript 108.2291ms
+2024-09-17 14:07:44.528 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 14:07:44.550 +03:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2024-09-17 14:07:44.558 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/favicon-32x32.png - null null
+2024-09-17 14:07:44.565 +03:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-09-17 14:07:44.568 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/favicon-32x32.png - 200 628 image/png 9.4518ms
+2024-09-17 14:07:45.355 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 826.3367ms
+2024-09-17 14:18:30.477 +03:30 [INF] Registered 11 endpoints in 651 milliseconds.
+2024-09-17 14:18:32.288 +03:30 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:18:32.327 +03:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:18:32.333 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:18:32.337 +03:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:18:32.360 +03:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-17 14:18:32.383 +03:30 [INF] No migrations were applied. The database is already up to date.
+2024-09-17 14:18:32.388 +03:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:18:32.406 +03:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2024-09-17 14:18:32.702 +03:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Factory] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-17 14:18:32.866 +03:30 [INF] Now listening on: https://localhost:7012
+2024-09-17 14:18:32.868 +03:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-17 14:18:32.869 +03:30 [INF] Hosting environment: Development
+2024-09-17 14:18:32.870 +03:30 [INF] Content root path: D:\Codes\PersonalProjects\Tracking\src\Tracking.api.Web
+2024-09-17 14:18:33.056 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012//swagger - null null
+2024-09-17 14:18:33.115 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012//swagger - 302 0 null 60.1969ms
+2024-09-17 14:18:33.136 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 14:18:33.277 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 141.2403ms
+2024-09-17 14:18:33.586 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 14:18:33.615 +03:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2024-09-17 14:18:34.367 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 781.0473ms
+2024-09-17 14:18:38.964 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012//swagger - null null
+2024-09-17 14:18:38.968 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012//swagger - 302 0 null 4.3263ms
+2024-09-17 14:18:38.973 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 14:18:38.981 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 7.7236ms
+2024-09-17 14:18:39.171 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 14:18:39.179 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 8.3493ms
+2024-09-17 14:20:09.360 +03:30 [INF] Registered 11 endpoints in 662 milliseconds.
+2024-09-17 14:20:11.061 +03:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:20:11.095 +03:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:20:11.101 +03:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:20:11.104 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:20:11.127 +03:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-17 14:20:11.149 +03:30 [INF] No migrations were applied. The database is already up to date.
+2024-09-17 14:20:11.155 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:20:11.173 +03:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2024-09-17 14:20:11.463 +03:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Factory] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-17 14:20:11.648 +03:30 [INF] Now listening on: https://localhost:7012
+2024-09-17 14:20:11.651 +03:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-17 14:20:11.659 +03:30 [INF] Hosting environment: Development
+2024-09-17 14:20:11.664 +03:30 [INF] Content root path: D:\Codes\PersonalProjects\Tracking\src\Tracking.api.Web
+2024-09-17 14:20:11.782 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012//swagger - null null
+2024-09-17 14:20:11.844 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012//swagger - 302 0 null 64.421ms
+2024-09-17 14:20:11.863 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 14:20:11.998 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 134.6071ms
+2024-09-17 14:20:12.234 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 14:20:12.255 +03:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2024-09-17 14:20:12.908 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 673.6781ms
+2024-09-17 14:21:53.107 +03:30 [INF] Registered 11 endpoints in 726 milliseconds.
+2024-09-17 14:21:54.969 +03:30 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:21:55.003 +03:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:21:55.009 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:21:55.013 +03:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:21:55.034 +03:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-17 14:21:55.055 +03:30 [INF] No migrations were applied. The database is already up to date.
+2024-09-17 14:21:55.059 +03:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:21:55.073 +03:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2024-09-17 14:21:55.375 +03:30 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Factory] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-17 14:21:55.561 +03:30 [INF] Now listening on: https://localhost:7012
+2024-09-17 14:21:55.564 +03:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-17 14:21:55.565 +03:30 [INF] Hosting environment: Development
+2024-09-17 14:21:55.566 +03:30 [INF] Content root path: D:\Codes\PersonalProjects\Tracking\src\Tracking.api.Web
+2024-09-17 14:21:55.867 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012//swagger - null null
+2024-09-17 14:21:55.934 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012//swagger - 302 0 null 68.4928ms
+2024-09-17 14:21:55.955 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 14:21:56.106 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 151.2285ms
+2024-09-17 14:21:56.362 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 14:21:56.386 +03:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2024-09-17 14:21:56.573 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 14:21:56.580 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 6.7511ms
+2024-09-17 14:21:57.157 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 14:21:57.158 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 796.0315ms
+2024-09-17 14:21:57.162 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 5.1217ms
+2024-09-17 14:22:36.753 +03:30 [INF] Registered 11 endpoints in 674 milliseconds.
+2024-09-17 14:22:38.461 +03:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:22:38.497 +03:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:22:38.503 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:22:38.506 +03:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 14:22:38.529 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-17 14:22:38.551 +03:30 [INF] No migrations were applied. The database is already up to date.
+2024-09-17 14:22:38.557 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 14:22:38.564 +03:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2024-09-17 14:22:38.862 +03:30 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Factory] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-17 14:22:39.044 +03:30 [INF] Now listening on: https://localhost:7012
+2024-09-17 14:22:39.047 +03:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-17 14:22:39.048 +03:30 [INF] Hosting environment: Development
+2024-09-17 14:22:39.049 +03:30 [INF] Content root path: D:\Codes\PersonalProjects\Tracking\src\Tracking.api.Web
+2024-09-17 14:22:39.195 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012//swagger - null null
+2024-09-17 14:22:39.246 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012//swagger - 302 0 null 52.0391ms
+2024-09-17 14:22:39.266 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 14:22:39.403 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 137.3154ms
+2024-09-17 14:22:39.632 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 14:22:39.658 +03:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2024-09-17 14:22:40.292 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 660.6542ms
+2024-09-17 14:22:47.285 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 14:22:47.290 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 4.7478ms
+2024-09-17 14:22:47.369 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 14:22:47.376 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 7.1428ms
+2024-09-17 14:24:39.755 +03:30 [INF] Request starting HTTP/2 POST https://localhost:7012/api/ProjectTodoItem/2/Create/TodoItemId - application/json 28
+2024-09-17 14:24:39.765 +03:30 [INF] Executing endpoint 'HTTP: POST /api/ProjectTodoItem/{ProjectId}/Create/TodoItemId'
+2024-09-17 14:24:39.852 +03:30 [INF] Executed endpoint 'HTTP: POST /api/ProjectTodoItem/{ProjectId}/Create/TodoItemId'
+2024-09-17 14:24:39.856 +03:30 [INF] Request finished HTTP/2 POST https://localhost:7012/api/ProjectTodoItem/2/Create/TodoItemId - 400 null application/problem+json 100.305ms
+2024-09-17 15:23:08.290 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 15:23:08.297 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 6.9294ms
+2024-09-17 15:23:08.764 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 15:23:08.771 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 7.401ms
+2024-09-17 15:26:37.004 +03:30 [INF] Registered 11 endpoints in 1,123 milliseconds.
+2024-09-17 15:26:39.251 +03:30 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 15:26:39.309 +03:30 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 15:26:39.318 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 15:26:39.323 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-17 15:26:39.396 +03:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-17 15:26:39.472 +03:30 [INF] No migrations were applied. The database is already up to date.
+2024-09-17 15:26:39.483 +03:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-17 15:26:39.555 +03:30 [INF] Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2024-09-17 15:26:39.830 +03:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Factory] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-17 15:26:40.069 +03:30 [INF] Now listening on: https://localhost:7012
+2024-09-17 15:26:40.077 +03:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-17 15:26:40.082 +03:30 [INF] Hosting environment: Development
+2024-09-17 15:26:40.086 +03:30 [INF] Content root path: D:\Codes\PersonalProjects\Tracking\src\Tracking.api.Web
+2024-09-17 15:26:40.417 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012//swagger - null null
+2024-09-17 15:26:40.525 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012//swagger - 302 0 null 108.7173ms
+2024-09-17 15:26:40.548 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/index.html - null null
+2024-09-17 15:26:40.795 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/index.html - 200 null text/html; charset=utf-8 247.2549ms
+2024-09-17 15:26:41.265 +03:30 [INF] Request starting HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - null null
+2024-09-17 15:26:41.294 +03:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2024-09-17 15:26:42.580 +03:30 [INF] Request finished HTTP/2 GET https://localhost:7012/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 1314.9636ms
